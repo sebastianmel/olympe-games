@@ -5,6 +5,7 @@ import json
 from airflow.providers.http.operators.http import SimpleHttpOperator
 from airflow.providers.http.operators.http import HttpOperator
 from airflow.operators.python import PythonOperator
+from sqlalchemy import create_engine
 import pandas as pd
 
 default_args = {
@@ -23,6 +24,7 @@ def kelvin_to_fahrenheit(temp_in_kelvin):
     return temp_in_fahrenheit
 
 def transform_load_data(task_instance):
+
     data = task_instance.xcom_pull(task_ids="extract_weather_data")
     city = data["name"]
     weather_description = data["weather"][0]['description']
@@ -53,11 +55,12 @@ def transform_load_data(task_instance):
     }
     transformed_data_list = [transformed_data]
     df_data = pd.DataFrame(transformed_data_list)
+    aws_credentials = {"key":"", "secret":"", "token":""}
 
     now = datetime.now()
     dt_string = now.strftime("%d%m%Y%H%M%S")
     dt_string = 'donnees_meteo_actuelles_paris_' + dt_string
-    df_data.to_csv(f"{dt_string}.csv", index=False)
+    df_data.to_csv(f"s3://weatherdata-yml/{dt_string}.csv", index=False,storage_options=aws_credentials)
 
 with DAG('weather_dag',
          default_args=default_args,
