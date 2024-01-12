@@ -6,11 +6,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "aws/aws-sdk-php": "^3.295",
+        "consoletvs/charts": "^6.6",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "laravel/ui": "^4.2"
+        "laravel/ui": "^4.2",
+        "league/flysystem-aws-s3-v3": "^3.22"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -22,6 +25,30 @@
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
+        "classmap": [
+            "database/seeders",
+            "database/factories",
+            "app/Http/Controllers/CsvController.php" ,
+            "app/Http/Controllers/ParisController.php" ,
+            "app/Http/Controllers/BordeauxController.php" ,
+            "app/Http/Controllers/LilleController.php",
+            "app/Http/Controllers/LyonController.php",
+            "app/Http/Controllers/MarseilleController.php" ,
+            "app/Http/Controllers/MontpellierController.php" ,
+            "app/Http/Controllers/NantesController.php" ,
+            "app/Http/Controllers/NiceController.php" ,
+            "app/Http/Controllers/StrasbourgController.php",
+            "app/Http/Controllers/ToulouseController.php" 
+
+
+
+
+
+
+
+
+
+        ],
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
@@ -63,5 +90,7 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "rapidweb/rapidweb-quickchart": "^1.0"
+
 }

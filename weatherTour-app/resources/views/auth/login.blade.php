@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+            /* Ajoutez votre CSS personnalisé ici */
+            body {
+                background: url(https://eskipaper.com/images/weather-wallpaper-4.jpg) no-repeat;
+               height: 100vh;
+                /* Ajoutez d'autres styles selon vos besoins */
+            }
+        </style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
