@@ -324,7 +324,7 @@
                         data: {
                             labels: cities,
                             datasets: [{
-                                label: 'Température Moyennes (F)',
+                                label: 'Température Moyennes (C°)',
                                 data: temperatures,
                                 backgroundColor: 'rgba(75, 192, 192, 0.8)',
                                 borderColor: 'rgba(75, 192, 192, 1)',
@@ -367,14 +367,14 @@
                         data: {
                             labels: cityLabels,
                             datasets: [{
-                                    label: 'Température Maximale (F)',
+                                    label: 'Température Maximale (C°)',
                                     data: maxTemps,
                                     backgroundColor: 'rgba(255, 99, 132, 0.5)', // Couleur pour les températures maximales
                                     borderColor: 'rgba(255, 99, 132, 1)',
                                     borderWidth: 1
                                 },
                                 {
-                                    label: 'Température Minimale (F)',
+                                    label: 'Température Minimale (C°)',
                                     data: minTemps,
                                     backgroundColor: 'rgba(54, 162, 235, 0.5)', // Couleur pour les températures minimales
                                     borderColor: 'rgba(54, 162, 235, 1)',
