@@ -131,15 +131,27 @@
             padding: 20px;
             /* Dodger Blue */
             width: 45%;
+            height: 350px;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
-
+      
         .organiz {
             padding: 10px;
             display: flex;
             justify-content: space-between;
         }
+        @media (max-width: 768px){
+            .chartposition {
+                height: 350px;
+                width: 100%;
+                margin-bottom: 10px;
+            }  
+            .organiz {
+                flex-direction: column;
+                padding: 0px;
+            }
+        }    
         /* Largeur et couleur de la barre */
 ::-webkit-scrollbar {
   width: 12px;
@@ -166,7 +178,7 @@
         display: flex;
         flex-wrap: wrap;
     }
-    a{
+    .links{
         text-decoration: none;
         color: black;
         margin: 5px ;
@@ -189,7 +201,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Weather France méteo</a>
+            <a class="navbar-brand" href="/">Weather France</a>
             <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -259,7 +271,7 @@
                 $ville = str_replace('.csv', '', $ville);
             @endphp
 
-            <a href="{{ url('/dashboard/'. strtolower($ville)) }}" class="">{{ ucfirst($ville) }}</a>
+            <a class="links" href="{{ url('/dashboard/'. strtolower($ville)) }}" class="">{{ ucfirst($ville) }}</a>
         @endforeach
     </div>
             </div>
@@ -336,7 +348,9 @@
                                 y: {
                                     beginAtZero: true
                                 }
-                            }
+                            },
+                            responsive: true, // Rendre le graphique responsive
+            maintainAspectRatio: false // Ne pas conserver le rapport d'aspect
                         }
                     });
                 });
@@ -387,7 +401,9 @@
                                 y: {
                                     beginAtZero: true
                                 }
-                            }
+                            },
+                            responsive: true, // Rendre le graphique responsive
+            maintainAspectRatio: false // Ne pas conserver le rapport d'aspect
                         }
                     });
                 });
@@ -436,7 +452,9 @@
                                 y: {
                                     beginAtZero: true
                                 }
-                            }
+                            },
+                            responsive: true, // Rendre le graphique responsive
+            maintainAspectRatio: false // Ne pas conserver le rapport d'aspect
                         }
                     });
                 });
@@ -485,7 +503,9 @@
                                 y: {
                                     beginAtZero: true
                                 }
-                            }
+                            },
+                            responsive: true, // Rendre le graphique responsive
+            maintainAspectRatio: false // Ne pas conserver le rapport d'aspect
                         }
                     });
                 });

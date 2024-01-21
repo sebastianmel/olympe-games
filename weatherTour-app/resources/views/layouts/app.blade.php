@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
+        <title>Weather France</title>
+        <link rel="icon" href="https://www.icone-png.com/png/11/10850.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="https://www.icone-png.com/png/11/10850.png" sizes="16x16" type="image/png">
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
