@@ -111,9 +111,13 @@
             flex-direction: column;
         }   
         .iconic2{
-        height: auto;
-      
-    }
+            height: auto;
+            width: 70%;
+            margin: auto;
+            display: flex;      
+        }
+        
+       
     }
 </style>
 <div class="chartposition">
@@ -139,14 +143,16 @@
         </div>
         <div class="situation">
             <p>{{ $description }}</p>
-            @if($description == 'overcast clouds')
+            @if($description == 'couvert')
                 <img src="{{ asset('/lib/nuage.jpeg')}}" alt="" class="iconic2">
-            @elseif($description == 'clear sky')
+            @elseif($description == 'ciel dégagé')
                 <img src="{{ asset('/lib/clear_sky.jpg')}}" alt="" class="iconic2">
-            @elseif($description == 'broken clouds')
+            @elseif($description == 'nuage brisé')
                 <img src="{{ asset('/lib/broken_cloud.jpg')}}" alt="" class="iconic2">
-            @elseif($description == 'light snow')
+            @elseif($description == 'lèger neige')
                 <img src="{{ asset('/lib/light_snow.jpg')}}" alt="" class="iconic2">
+            @elseif($description == 'bruine légère')
+                <img src="{{ asset('/lib/bruine.png')}}" alt="" class="iconic2">
             @else    
                 <!-- Ajoutez d'autres conditions si nécessaire -->
                 <img src="{{ asset('/lib/rain.jpg')}}" alt="" class="iconic2">
@@ -169,7 +175,7 @@
     <section class="organiz">
         <div class="chartposition">
             <img src="{{ asset('/lib/temperature.png')}}" alt="" class="iconic">
-            <p>vitesse des vents : <br> {{number_format($temperature, 2) }} F</p>
+            <p>Témpérature : <br> {{number_format($temperature, 2) }} C°</p>
         </div>
         <div class="chartposition">
             <img src="{{ asset('/lib/humidite.png')}}" alt="" class="iconic">

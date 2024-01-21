@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CsvController;
 use App\Http\Controllers\HomeController;
@@ -15,8 +15,6 @@ use NantesController as GlobalNantesController;
 use NiceController as GlobalNiceController;
 use StrasbourgController as GlobalStrasbourgController;
 use ToulouseController as GlobalToulouseController;
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,17 +26,18 @@ use ToulouseController as GlobalToulouseController;
 |
 */
 
-// Route par défaut
 Route::get('/', function () {
     return view('homeB');
 });
 
-// Routes d'authentification générées par Auth::routes()
-Auth::routes();
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Routes nécessitant une authentification
-Route::middleware(['auth'])->group(function () {
-    // Route du tableau de bord
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/dashboard', [GlobalCsvController::class, 'getCSVFromS3'])->name('dashboard');
     Route::get('/dashboard/paris', [GlobalParisController::class, 'getCSVFromS3'])->name('parisPage');
     Route::get('/dashboard/bordeaux', [GlobalBordeauxController::class, 'getCSVFromS3'])->name('bordeauxPage');
@@ -50,8 +49,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/nice', [GlobalNiceController::class, 'getCSVFromS3'])->name('nicePage');
     Route::get('/dashboard/strasbourg', [GlobalStrasbourgController::class, 'getCSVFromS3'])->name('strasbourgPage');
     Route::get('/dashboard/toulouse', [GlobalToulouseController::class, 'getCSVFromS3'])->name('toulousePage');
-
-    // Vous pouvez également ajouter d'autres routes authentifiées ici
 });
-// Route de la page d'accueil
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+require __DIR__.'/auth.php';

@@ -37,7 +37,7 @@ class StrasbourgController extends Controller
         $temperature = $csvData['donnees_meteo_actuelles_Strasbourg.csv'][1][2]; // Exemple, ajustez en fonction de la structure réelle
         $humidite = $csvData['donnees_meteo_actuelles_Strasbourg.csv'][1][7]; // Exemple, ajustez en fonction de la structure réelle
         $vent = $csvData['donnees_meteo_actuelles_Strasbourg.csv'][1][8]; // Exemple, ajustez en fonction de la structure réelle
-        $pression = $csvData['donnees_meteo_actuelles_Strasbourg.csv'][1][8]; // Exemple, ajustez en fonction de la structure réelle
+        $pression = $csvData['donnees_meteo_actuelles_Strasbourg.csv'][1][6]; // Exemple, ajustez en fonction de la structure réelle
 
 
         return view('strasbourgPage', [
